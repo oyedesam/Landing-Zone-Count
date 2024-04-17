@@ -26,3 +26,17 @@ To install packages, execute
 To run the application you need to replace <BucketName> with the actual bucketname and <BucketFilePath> with the bucket file path.
 
 ```  python count.py <BucketName> <BucketFilePath> ```
+
+## Example
+
+Bucket Name - adventureworks
+
+Bucket File Path - test/files/
+
+Run: 
+
+```  python count.py adventureworks test/files/ ```
+
+After executing the script above, A result.txt file would be created in the root directory that would contain the results of the execution
+
+

@@ -1,5 +1,6 @@
 import sys
 import boto3
+import datetime
 from halo import Halo
 from collections import defaultdict
 
@@ -23,21 +24,24 @@ objects = list(bucket.objects.filter(Prefix=prefix))
 objects_by_date = defaultdict(list)
 total_count = 0
 
-
 for obj in objects:
-    date = obj.last_modified.strftime('%Y-%m-%d')
-    objects_by_date[date].append(obj)
-    total_count += 1
+        date = obj.last_modified.strftime('%Y-%m-%d')
+        objects_by_date[date].append(obj)
+        total_count += 1
+
 
 
 
 spinner.stop()
 
-for date, objs in objects_by_date.items():
-    print(f'Number of objects: {len(objs)} uploaded on Date: {date} ')
+with open('results.txt', 'w') as f:
+    for date, objs in objects_by_date.items():
+        f.write(f'Upload Results Details for {bucket}/{prefix}\n')
+        f.write(f'Number of objects: {len(objs)} uploaded on Date: {date}\n')
 
-
-print(f'Total number of objects in {prefix}: {total_count}')
+    
+    f.write(f'Total number of objects in {prefix}: {total_count}\n')
+    print("Done! Check results.txt for more details.")
 
 
 
