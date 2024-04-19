@@ -4,7 +4,7 @@ A python script to count the number of data that go into the Landing zone on a p
 
 
 
-## Configure AWS Account
+## Configure AWS Account - Prelive
 
 execute
 
@@ -13,6 +13,17 @@ execute
 Login
 
 ```saml2aws login -a default```
+
+## Configure AWS Account - Live
+execute
+
+```saml2aws configure -a chssnd --role=arn:aws:iam::290364463189:role/ADFS-ReadOnly -p chssnd -r eu-west-1```
+
+Login
+
+```saml2aws login -a chssnd```
+
+See https://confluence.tools.cha.rbxd.ds/display/ICISTECH/How+to+view+kubernetes+clusters#Howtoviewkubernetesclusters-ConnectingtoAWS for more information
 
 ## Install Prequisites
 
@@ -37,6 +48,6 @@ Run:
 
 ```  python count.py adventureworks test/files/ ```
 
-After executing the script above, A result.txt file would be created in the root directory that would contain the results of the execution
+After executing the script above, A result.html file would be created in the root directory that would contain the results of the execution.
 
 
