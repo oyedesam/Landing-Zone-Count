@@ -1,0 +1,23 @@
+# name of the workflow
+name: GreetingsCI
+
+# The workflow would be triggered on pull request or issue event for any branch
+on:
+  push
+
+# A workflow is made up of multiple jobs
+jobs:
+# The name of the job is the greeting-job
+  greeting-job:
+  # The job would run on an ubuntu runner
+    runs-on: ubuntu-latest
+      # Steps are series or sequence of task that will be execude as part of the job
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: "Message that will be displayed on users' first issue"
+        pr-message: "Message that will be displayed on users' first pull request"
+        
+    - name: Run a one liner script
+      run: echo Hello Human!
